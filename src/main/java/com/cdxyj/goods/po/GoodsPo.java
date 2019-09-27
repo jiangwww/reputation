@@ -7,12 +7,28 @@ package com.cdxyj.goods.po;
  **/
 public class GoodsPo {
     private int id;
-    private String GoodsName;
+    private String goodsName;
     private String pictureUrl;
-    private String GoodsPrice;
-    private String GoodsUnit;
+    private String goodsPrice;
+    private String goodsUnit;
     private String frist;
     private String second;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 
     public String getPictureUrl() {
         return pictureUrl;
@@ -23,19 +39,19 @@ public class GoodsPo {
     }
 
     public String getGoodsPrice() {
-        return GoodsPrice;
+        return goodsPrice;
     }
 
     public void setGoodsPrice(String goodsPrice) {
-        GoodsPrice = goodsPrice;
+        this.goodsPrice = goodsPrice;
     }
 
     public String getGoodsUnit() {
-        return GoodsUnit;
+        return goodsUnit;
     }
 
     public void setGoodsUnit(String goodsUnit) {
-        GoodsUnit = goodsUnit;
+        this.goodsUnit = goodsUnit;
     }
 
     public String getFrist() {
@@ -52,21 +68,5 @@ public class GoodsPo {
 
     public void setSecond(String second) {
         this.second = second;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getGoodsName() {
-        return GoodsName;
-    }
-
-    public void setGoodsName(String goodsName) {
-        GoodsName = goodsName;
     }
 }
