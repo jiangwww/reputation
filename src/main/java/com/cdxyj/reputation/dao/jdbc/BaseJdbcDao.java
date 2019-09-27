@@ -25,7 +25,7 @@ public class BaseJdbcDao implements IBaseJdbcDao{
     @Override
     public int update(String sql, Object[] args, int[] argTypes) throws DataAccessException {
         try {
-            int i = getJdbcTemplate().update(sql);
+            int i = getJdbcTemplate().update(sql, args, argTypes);
             return i;
         } catch (DataAccessException e) {
             throw e;

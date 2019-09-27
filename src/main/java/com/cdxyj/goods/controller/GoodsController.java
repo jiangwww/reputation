@@ -1,7 +1,10 @@
 package com.cdxyj.goods.controller;
 
 import com.cdxyj.goods.po.GoodsPo;
+import com.cdxyj.reputation.dao.IXyjDao;
 import com.cdxyj.reputation.util.AjaxResultPo;
+import com.cdxyj.reputation.vo.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,17 +20,21 @@ import java.util.List;
 @Controller
 @RequestMapping("/goods")
 public class GoodsController {
+    @Autowired
+    IXyjDao xyjDao;
     @RequestMapping("/list")
     @ResponseBody
-    public AjaxResultPo list(){
+    public AjaxResultPo list(int page, int rows, GoodsPo goodsPo){
         AjaxResultPo resultPo = new AjaxResultPo();
-        List<GoodsPo> goodsPos = new ArrayList<>();
-        GoodsPo goodsPo = new GoodsPo();
-        goodsPo.setGoodsName("123");
-        goodsPos.add(goodsPo);
+        PageInfo pageInfo = null;
+        if (page > 0) {
+            pageInfo = new PageInfo((page - 1) * rows, rows);
+        }
+        List<GoodsPo> goodsPos = xyjDao.queryGoodsByPage(pageInfo,goodsPo);
+
         resultPo.setSuccess(true);
         resultPo.setMsg("查询成功");
-        resultPo.setTotal(1);
+        resultPo.setTotal(pageInfo.getResults());
         resultPo.setRows(goodsPos);
         return resultPo;
     }
