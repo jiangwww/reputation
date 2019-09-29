@@ -32,4 +32,8 @@ public class ReputationApplication {
 	public String contact(){
 		return "contact";
 	}
+	@GetMapping("/admin")
+	public String admin(){
+		return "admin/login1";
+	}
 }

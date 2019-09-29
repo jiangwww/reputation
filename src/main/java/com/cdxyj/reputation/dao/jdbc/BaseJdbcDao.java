@@ -147,6 +147,11 @@ public class BaseJdbcDao implements IBaseJdbcDao{
 
     @Override
     public <T> List<T> queryForList(String sql, Class<T> poClass) throws DataAccessException {
-        return null;
+        try {
+            List<T> list = getJdbcTemplate().query(sql, new BeanPropertyRowMapper<T>(poClass));
+            return list;
+        } catch (DataAccessException e) {
+            throw e;
+        }
     }
 }
